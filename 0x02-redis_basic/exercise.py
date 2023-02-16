@@ -6,6 +6,7 @@ import redis
 from functools import wraps
 from typing import Any, Callable, Union
 
+
 def count_calls(method: Callable) -> Callable:
     '''Tracks the number of calls made to a method in a Cache class.
     '''
@@ -35,6 +36,7 @@ def call_history(method: Callable) -> Callable:
             self._redis.rpush(out_key, output)
         return output
     return invoker
+
 
 def replay(fn: Callable) -> None:
     '''Displays the call history of a Cache class' method.
